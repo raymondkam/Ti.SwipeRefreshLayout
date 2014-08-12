@@ -7,35 +7,42 @@ import org.appcelerator.titanium.view.TiUIView;
 import org.appcelerator.titanium.util.TiRHelper;
 import org.appcelerator.titanium.util.TiRHelper.ResourceNotFoundException;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.util.Log;
 
 public class SwipeRefresh extends TiUIView {
 	
-	private SwipeRefreshLayout layout;
+	private MySwipeRefreshLayout layout;
 	private TiViewProxy view;
 	
 	public static final String PROPERTY_VIEW = "view";
 	public static final String PROPERTY_COLOR_SCHEME = "colorScheme";
+	private static final String TAG = "SwipeRefresh";
 	
+	int color1 = 0;
+	int color2 = 0;
+	int color3 = 0;
+	int color4 = 0;
 	int layout_swipe_refresh = 0;
 	
+	// Constructor for SwipeRefresh
 	public SwipeRefresh(final SwipeRefreshProxy proxy) {
 		super(proxy);
 		
-//		ActionBarActivity activity = (ActionBarActivity) proxy.getActivity();
-		
 		try {
 			layout_swipe_refresh = TiRHelper.getResource("layout.swipe_refresh");
+			color1 = TiRHelper.getResource("color.color1");
+			color2 = TiRHelper.getResource("color.color2");
+			color3 = TiRHelper.getResource("color.color3");
+			color4 = TiRHelper.getResource("color.color4");
 		}
 		catch (ResourceNotFoundException e) {
-			
+			Log.e(TAG, "Resources not found!");
 		}
 		
 		LayoutInflater inflater = LayoutInflater.from(TiApplication.getInstance());
-		layout = (SwipeRefreshLayout) inflater.inflate(layout_swipe_refresh, null, false);
+		layout = (MySwipeRefreshLayout) inflater.inflate(layout_swipe_refresh, null, false);
 		
 		layout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
@@ -55,37 +62,20 @@ public class SwipeRefresh extends TiUIView {
 			Object view = d.get(PROPERTY_VIEW);
 			if (view != null && view instanceof TiViewProxy) {
 				this.view = (TiViewProxy) view;
+				this.layout.setNativeView(this.view.getOrCreateView().getNativeView());
 				this.layout.addView(this.view.getOrCreateView().getOuterView());
-			}
-		}
-		if (d.containsKey(PROPERTY_COLOR_SCHEME)) {
-			String[] colorStrings = (String[]) d.get(PROPERTY_COLOR_SCHEME);
-			if (colorStrings != null && colorStrings.length == 4) {
-				this.layout.setColorScheme(
-					Color.parseColor(colorStrings[0]), 
-					Color.parseColor(colorStrings[1]), 
-					Color.parseColor(colorStrings[2]), 
-					Color.parseColor(colorStrings[3])
-				);
+				this.layout.setColorScheme(color1, color2, color3, color4);
 			}
 		}
 		super.processProperties(d);
 	}
 	
 	public boolean isRefreshing() {
-		return layout.isRefreshing();
+		return this.layout.isRefreshing();
 	}
 	
 	public void setRefreshing(boolean refreshing) {
 		this.layout.setRefreshing(refreshing);
 	}
 	
-	public void setColorScheme(String[] colorStrings) {
-		this.layout.setColorScheme(
-			Color.parseColor(colorStrings[0]), 
-			Color.parseColor(colorStrings[1]), 
-			Color.parseColor(colorStrings[2]), 
-			Color.parseColor(colorStrings[3]
-		));
-	}
 }
