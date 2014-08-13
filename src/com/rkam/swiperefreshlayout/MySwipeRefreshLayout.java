@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 /**
  * MySwipeRefreshLayout is a modified SwipeRefreshLayout so that Titanium views
@@ -37,9 +38,10 @@ public class MySwipeRefreshLayout extends SwipeRefreshLayout {
 	
 	@Override
 	public boolean canChildScrollUp() {
-		if (nativeView instanceof FrameLayout) {
-			// Try to get the native Android ListView or the scrollable view which
-			// Titanium wraps in a FrameLayout
+		// ScrollViews are also an instance of FrameLayouts and we do not want to get
+		// the ScrollView's child view as it will not work.
+		if (nativeView instanceof FrameLayout && !(nativeView instanceof ScrollView)) {
+			// Try to get the native Android ListView inside the FrameLayout
         	nativeChildView = ((FrameLayout) nativeView).getChildAt(0);
 		} else {
 			nativeChildView = nativeView;
