@@ -7,11 +7,14 @@ To be added later on.
 
 Using the compiled zip
 -----------
-- Download the module zip from the dist folder
-- Open Titanium Studio
-- Go to Help in menu and click on Install Mobile Module
-- Point to the zip file and install into your project
+1. Download the module zip from the dist folder
+2. Open Titanium Studio
+3. Go to Help in menu and click on Install Mobile Module
+4. Point to the zip file and install into your project
+5. Rename android_support-v4.jar to android_support-v4.disabled.jar located:
+	* on OS X: **/Users/(your username)/Library/Application Support/Titanium/mobilesdk/osx/(your titanium version)/android/**
 	
+
 To initialize
 -----------
 The initialization of the module requires a handle to the scrollable view. If the scrollable view is in xml, you can create a new controller for the scrollable view and then pass it in as the view.
