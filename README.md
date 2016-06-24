@@ -11,9 +11,9 @@ Using the compiled zip
 2. Open Titanium Studio
 3. Go to Help in menu and click on Install Mobile Module
 4. Point to the zip file and install into your project
-5. Rename android_support-v4.jar to android_support-v4.disabled.jar located:
+5. (NOT NEEDED ANYMORE)Rename android_support-v4.jar to android_support-v4.disabled.jar located:
 	* on OS X: **/Users/(your username)/Library/Application Support/Titanium/mobilesdk/osx/(your titanium version)/android/**
-	
+
 
 To initialize
 -----------
@@ -53,7 +53,7 @@ A refreshing event is fired when the swipe gesture is completed.
 	swipeRefresh.addEventListener('refreshing', function() {
 
 		// Put your refresh code here
-	
+
 	});
 
 Set refreshing

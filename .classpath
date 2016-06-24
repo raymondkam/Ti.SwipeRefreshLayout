@@ -13,6 +13,5 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/android-support-v4.jar" sourcepath="/Users/rkam/Downloads/support/v4/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
