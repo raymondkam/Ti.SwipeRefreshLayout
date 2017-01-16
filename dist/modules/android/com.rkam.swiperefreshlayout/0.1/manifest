@@ -4,7 +4,7 @@
 #
 version: 0.1
 apiversion: 2
-description: Titanium version of SwipeRefreshLayout
+description: Android Swipe Refresh Layout
 architectures: armeabi armeabi-v7a x86 x86_64
 author: Raymond Kam
 license: Specify your license
