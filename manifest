@@ -2,10 +2,10 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.1
-apiversion: 2
+version: 1.0.0
+apiversion: 3
 description: Titanium version of SwipeRefreshLayout
-architectures: armeabi armeabi-v7a x86 x86_64
+architectures: armeabi-v7a x86
 author: Raymond Kam
 license: Specify your license
 copyright: Copyright (c) 2016 by Your Company
@@ -16,4 +16,4 @@ name: swiperefreshlayout
 moduleid: com.rkam.swiperefreshlayout
 guid: fc0f2168-ac27-4239-bcb0-c51d7683eb05
 platform: android
-minsdk: 5.1.2.GA
+minsdk: 6.0.0
