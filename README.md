@@ -1,3 +1,5 @@
+NOT MAINTAINED, use other forks.
+
 Ti.SwipeRefreshLayout Titanium Module
 ===========================================
 
